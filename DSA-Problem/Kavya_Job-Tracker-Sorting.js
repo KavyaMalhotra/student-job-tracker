@@ -1,3 +1,5 @@
+// Sorting job applications by applied date using QuickSort algorithm
+
 function quickSortJobs(jobs) {
     if (jobs.length <= 1) return jobs;
   
