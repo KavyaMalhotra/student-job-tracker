@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { deleteJob } from '../api';
 
 export default function JobTable({ jobs }) {
   const navigate = useNavigate();
@@ -10,8 +11,8 @@ export default function JobTable({ jobs }) {
     if (!confirm) return;
 
     try {
-      await axios.delete(`http://localhost:5000/jobs/${id}`);
-      window.location.reload(); // for now, easy way to refresh view
+      await axios.delete(deleteJob(id));
+      window.location.reload(); // simple page reload to reflect deletion
     } catch (err) {
       console.error('Delete failed:', err);
       alert('Failed to delete the job. Try again.');
@@ -57,13 +58,13 @@ export default function JobTable({ jobs }) {
                   onClick={() => navigate(`/edit/${job._id}`)}
                   className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded text-xs"
                 >
-                   Edit
+                  Edit
                 </button>
                 <button
                   onClick={() => handleDelete(job._id, job.company)}
                   className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs"
                 >
-                   Delete
+                  Delete
                 </button>
               </td>
             </tr>
