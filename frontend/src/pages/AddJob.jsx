@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { postJob } from '../api';
 
 export default function AddJob() {
   const navigate = useNavigate()
@@ -24,7 +25,7 @@ export default function AddJob() {
 
     try {
       // POST to backend
-      const res = await axios.post('http://localhost:5000/jobs', formData)
+      const res = await axios.post(postJob(), formData);
       console.log('Job added:', res.data)
 
       // Navigate to view jobs page

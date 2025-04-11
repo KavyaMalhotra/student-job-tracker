@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { getJobById, patchJob } from '../api';
 
 export default function EditJob() {
   const { id } = useParams();
@@ -21,7 +22,7 @@ export default function EditJob() {
   useEffect(() => {
     async function fetchJob() {
       try {
-        const res = await axios.get(`http://localhost:5000/jobs/${id}`);
+        const res = await axios.get(getJobById(id));
         const { _id, ...jobData } = res.data; // 🔐 remove _id
         setFormData(jobData);
       } catch (err) {
@@ -48,7 +49,7 @@ export default function EditJob() {
 
     try {
       const { _id, ...jobData } = formData; // 🛡️ ensure _id isn't sent
-      await axios.patch(`http://localhost:5000/jobs/${id}`, jobData);
+      await axios.patch(patchJob(id), formData);
       navigate('/view');
     } catch (err) {
       console.error(err);

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { getJobs } from '../api';
 import JobCard from '../components/JobCard';
 import JobTable from '../components/JobTable';
 import FilterBar from '../components/FilterBar';
@@ -12,7 +13,7 @@ export default function ViewJobs() {
   useEffect(() => {
     async function fetchJobs() {
       try {
-        const res = await axios.get('http://localhost:5000/jobs');
+        const res = await axios.get(getJobs());;
         setJobs(res.data);
       } catch (err) {
         console.error(err);
