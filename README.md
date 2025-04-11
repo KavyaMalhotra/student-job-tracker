@@ -1,70 +1,63 @@
-# Getting Started with Create React App
+# 📘 Student Job Tracker
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 1. Introduction
+Student Job Tracker is a full-stack web application that helps students keep track of their job applications. Users can add, view, edit, and delete job entries with ease using a clean and responsive interface.
 
-## Available Scripts
+Built with **React.js** for the frontend and **Node.js + Express** for the backend, and it uses **MongoDB Atlas** as the database. The UI is styled with **Tailwind CSS**.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 2. Functionality
+- 📝 Add new job applications  
+- 📋 View all saved jobs in card or table format (responsive)  
+- ✏️ Edit existing job entries (prefilled form)  
+- 🗑️ Delete job entries  
+- 💾 Persistent storage using MongoDB Atlas  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 3. Database
+- **Database**: MongoDB Atlas  
+- **Collection**: `applications`  
+- **Fields**:
+  - `company` (string)
+  - `role` (string)
+  - `status` (enum: Applied, Interview, Offer, Rejected)
+  - `date` (string - ISO Date)
+  - `link` (string - optional)
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 4. Frontend
+### 🔧 Setup & Run
+```bash
+cd frontend
+npm install
+npm start
+```
+### 🔗 Features
+- React Router DOM for navigation
+- Axios for API calls
+- TailwindCSS for styling
+- Responsive layout with cards (mobile) and tables (desktop)
 
-### `npm run build`
+## 5. Backend
+### 🔧 Setup & Run
+```bash
+cd backend
+npm install
+node index.js
+```
+### 🌐 API Endpoints
+- GET /jobs → fetch all jobs
+- GET /jobs/:id → fetch single job by ID
+- POST /jobs → add new job
+- PATCH /jobs/:id → update job
+- DELETE /jobs/:id → delete job
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### 🔐 Environment Variables
+Create a .env file in the backend/ folder:
+```bash
+MONGO_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/?retryWrites=true&w=majority
+```
+Built by Kavya Malhotra.
