@@ -25,7 +25,7 @@ export default function AddJob() {
 
     try {
       // POST to backend
-      const res = await axios.post(postJob(), formData);
+      const res = await axios.post(`${BASE_URL}/jobs`, formData);
       console.log('Job added:', res.data)
 
       // Navigate to view jobs page

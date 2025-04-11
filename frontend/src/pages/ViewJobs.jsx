@@ -13,7 +13,7 @@ export default function ViewJobs() {
   useEffect(() => {
     async function fetchJobs() {
       try {
-        const res = await axios.get(getJobs());;
+        const res = await axios.get(getJobs());
         setJobs(res.data);
       } catch (err) {
         console.error(err);
