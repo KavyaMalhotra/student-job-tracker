@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { deleteJob } from '../api';
 
 export default function JobCard({ job }) {
   const navigate = useNavigate();
@@ -10,8 +11,8 @@ export default function JobCard({ job }) {
     if (!confirm) return;
 
     try {
-      await axios.delete(`http://localhost:5000/jobs/${job._id}`);
-      window.location.reload(); // or use state refetching if you prefer
+      await axios.delete(deleteJob(job._id));
+      window.location.reload(); // optionally replace with state update
     } catch (err) {
       console.error('Delete failed:', err);
       alert('Failed to delete the job. Try again.');
@@ -42,13 +43,13 @@ export default function JobCard({ job }) {
           onClick={() => navigate(`/edit/${job._id}`)}
           className="text-sm text-white bg-blue-600 hover:bg-blue-700 px-4 py-1.5 rounded"
         >
-           Edit
+          Edit
         </button>
         <button
           onClick={handleDelete}
           className="text-sm text-white bg-red-600 hover:bg-red-700 px-4 py-1.5 rounded"
         >
-           Delete
+          Delete
         </button>
       </div>
     </div>
